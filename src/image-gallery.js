@@ -1,15 +1,40 @@
 import React, { Component } from 'react';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 
 export default class ImageGallery extends Component{
 
     render(){
+/*
+        images: [{
+            "http://via.placeholder.com/600x350":"This is the alt text"
+          }, {
+              "http://via.placeholder.com/600x350":"This is the alt text"
+          }, {
+              "http://via.placeholder.com/600x350":"This is the alt text"
+          }
+        ]} */
+
+            const imageArray = this.props.images
+
+            const imageComponents =  imageArray.map((image)=>{
+                return(
+                   <Image src={image[0]} alt={image[1]} />
+                )
+            })
+
+        
+
         return(
-            <div className="image-gallery scrolling-wrapper-flexbox">
-                <Image alt="Kitty girl" src="https://loremflickr.com/350/350" />
-                <Image alt="" src="https://loremflickr.com/350/350" />
-                <Image alt="" src="https://loremflickr.com/350/350" />
+
+            <div>
+               {imageComponents}
             </div>
+            /*<div className="image-gallery scrolling-wrapper-flexbox">
+
+                <Image alt="placeholder" src={this.props.match.params.image} />
+                <Image alt="" src="http://via.placeholder.com/350x350" />
+                <Image alt="" src="http://via.placeholder.com/350x350" />
+            </div>*/
         )
     }
 }
@@ -36,7 +61,7 @@ export class Image extends Component{
        
 
     render(){
-        let imageClasses = "fullscreen"
+        
         
         
         return(

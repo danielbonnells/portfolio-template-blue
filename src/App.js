@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
-import { Projects, About, Contact } from './pages';
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { About, Contact } from './pages';
+import { Projects } from './projects';
 import './App.css';
 
 
@@ -30,7 +31,7 @@ showNav = () => {
         <div>
           <div id="navigation">
             <div  id="nav-button-container">
-            <button  id="nav-button" onClick={this.showNav} role="button" ><i class="fas fa-bars"></i></button>
+            <button  id="nav-button" onClick={this.showNav} ><i className="fas fa-bars"></i></button>
             </div>
 
               {this.state.isNavOpen  && (
