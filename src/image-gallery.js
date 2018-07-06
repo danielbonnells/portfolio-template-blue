@@ -14,19 +14,22 @@ export default class ImageGallery extends Component{
           }
         ]} */
 
-            const imageArray = this.props.images
-
-            const imageComponents =  imageArray.map((image)=>{
-                return(
-                   <Image src={image[0]} alt={image[1]} />
+            const imageObject = this.props.images
+           
+            let imageComponents = []
+            
+            for (var i = 1; i < Object.keys(imageObject).length + 1; i++) {
+    
+                imageComponents.push(
+                   <Image src={imageObject['image' + i].source} alt={imageObject['image' + i].altText} />
                 )
-            })
+            }
 
         
 
         return(
 
-            <div>
+            <div className="image-gallery scrolling-wrapper-flexbox">
                {imageComponents}
             </div>
             /*<div className="image-gallery scrolling-wrapper-flexbox">

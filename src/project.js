@@ -2,18 +2,13 @@ import React, { Component } from 'react';
 import ImageGallery from './image-gallery';
 
 
-export class Project extends Component {
+const Project = ({ match , data}) => {
    
-    
-    
-
-    render(){
-        console.log("hi");
-
-        let project = this.props.data.find(p => p.id === this.props.match.params.id);
-        console.log(project)
+       
+        let project = data.find(p => p.id == match.params.id);
+        
         let projectData;
-      
+        
 
         if(project) {
             projectData = <div>
@@ -21,6 +16,7 @@ export class Project extends Component {
             <ProjectTitle title={project.title}/>
             <ProjectDescription desc={project.description} />
             </div>;
+            
         }
           
         else{
@@ -38,7 +34,7 @@ export class Project extends Component {
 
 
 
-}
+export default Project;
 
 export class ProjectTitle extends Component{
 
