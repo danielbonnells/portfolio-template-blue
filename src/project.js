@@ -11,12 +11,13 @@ const Project = ({ match , data}) => {
         
     if(data.length > 1){
         if(project) {
-            projectData = <div>
+            projectData = <div className="project-container">
             <ImageGallery images={project.images}/>
+            <div className="project-text-container">
             <ProjectTitle title={project.title}/>
-            <ProjectDescription desc={project.description} />
+            <ProjectDescription desc={project.description} link={project.link} />
             <ProjectControls id={project.id} numOfProjects={data.length} />
-              
+            </div>
             </div>
             
         } else{
@@ -49,7 +50,11 @@ export class ProjectTitle extends Component{
 }// end component
 
 function ProjectDescription(props) { 
-    return (<p className="project-description">{props.desc}</p>)
+    return (<p className="project-description">{props.desc}<br/>
+            { props.link &&
+            <a href={props.link} aria-label="Opens in a new tab" target="_blank" className="project-link">View the project online</a>
+            }
+            </p>)
 }//end component
 
 const ProjectControls = (props) =>{

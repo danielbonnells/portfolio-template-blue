@@ -20,7 +20,7 @@ export default class ImageGallery extends Component{
 
         return(
 
-            <div className="image-gallery scrolling-wrapper-flexbox">
+            <div className="image-gallery">
                {imageComponents}
             </div>
         )
@@ -53,23 +53,24 @@ export class Image extends Component{
         
         
         return(
-           <div>
+           <div className="image-single-container"> 
+            
                 <button className="image-single" onClick={this.imageModalHandler}>
 
                     <img alt={this.props.alt} src={this.props.src} />
 
                 </button>
-                
+
                 {this.state.imageModal  && (
                     <div className="fullscreen">
-                    <div className="photo-div">
-                        <button onClick={this.imageModalHandler} className="close-btn fadeItIn" title="Close">Close</button>
-                        <FocusImage source={this.props.src} altText={this.props.alt} />
+                        <div className="photo-div">
+                            <button onClick={this.imageModalHandler} className="close-btn fadeItIn" title="Close">Close</button>
+                            <FocusImage source={this.props.src} altText={this.props.alt} />
                         </div>
                     </div>
                     )}
-                
-            </div>
+     
+           </div>
         )
     }
 }
@@ -79,7 +80,7 @@ export class FocusImage extends Component{
     render(){
 
         return (
-            <div>
+            <div className="photo-container">
                 <img alt={this.props.altText} src={this.props.source} className="photo fadeItIn"/>
             </div>
         )

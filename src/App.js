@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-do
 import { About, Contact } from './pages';
 import  Projects  from './projects';
 import './App.css';
-import firebase from 'firebase/app';
+import firebase from 'firebase';
 //import database from 'firebase/database';
 
 class App extends Component {
@@ -60,7 +60,8 @@ componentDidMount(){
               {this.state.isNavOpen  && (
                 <div className="nav-links-container">
                   <ul className="nav-links">
-                      <li><NavLink to="/projects" exact activeStyle={activeStyle} onClick={this.showNav}>Projects</NavLink></li>
+                      <li><NavLink to="/" exact activeStyle={activeStyle} onClick={this.showNav}>Home</NavLink></li>
+                      <li><NavLink to="/projects" activeStyle={activeStyle} onClick={this.showNav}>Projects</NavLink></li>
                       <li><NavLink to="/about" activeStyle={activeStyle} onClick={this.showNav}>About</NavLink></li>
                       <li><NavLink to="/contact" activeStyle={activeStyle} onClick={this.showNav}>Contact</NavLink></li>
                   </ul>

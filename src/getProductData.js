@@ -15,17 +15,6 @@ export class GetProductData extends Component{
    
 render(){
 
-    /*let linkList = this.props.myProjects.map( (project) => {
-    
-        return(
-            
-        <li key={project.id}>
-            <Link to={`${this.props.match.url}/${project.id}`}>
-                {project.title}
-            </Link>
-        </li>
-        )})*/
-
     let projectGrid = this.props.myProjects.map( (project) => {
        let number = project.id
 
@@ -49,9 +38,6 @@ render(){
  )
     return(
     <div>
-        {/*<ul>
-            {linkList}
-        </ul>*/}
         <div className="grid-container">
             {projectGrid} 
         </div>
