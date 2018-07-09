@@ -4,15 +4,6 @@ import React, { Component } from 'react';
 export default class ImageGallery extends Component{
 
     render(){
-/*
-        images: [{
-            "http://via.placeholder.com/600x350":"This is the alt text"
-          }, {
-              "http://via.placeholder.com/600x350":"This is the alt text"
-          }, {
-              "http://via.placeholder.com/600x350":"This is the alt text"
-          }
-        ]} */
 
             const imageObject = this.props.images
            
@@ -21,7 +12,7 @@ export default class ImageGallery extends Component{
             for (var i = 1; i < Object.keys(imageObject).length + 1; i++) {
     
                 imageComponents.push(
-                   <Image src={imageObject['image' + i].source} alt={imageObject['image' + i].altText} />
+                   <Image key={i} src={imageObject['image' + i].source} alt={imageObject['image' + i].altText} />
                 )
             }
 
@@ -32,12 +23,6 @@ export default class ImageGallery extends Component{
             <div className="image-gallery scrolling-wrapper-flexbox">
                {imageComponents}
             </div>
-            /*<div className="image-gallery scrolling-wrapper-flexbox">
-
-                <Image alt="placeholder" src={this.props.match.params.image} />
-                <Image alt="" src="http://via.placeholder.com/350x350" />
-                <Image alt="" src="http://via.placeholder.com/350x350" />
-            </div>*/
         )
     }
 }
