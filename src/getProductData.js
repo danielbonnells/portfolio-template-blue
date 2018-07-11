@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 export class GetProductData extends Component{
    
 render(){
-
+    //map over project data for the grid on the home Projects page
     let projectGrid = this.props.myProjects.map( (project) => {
 
        let slug = project.slug
