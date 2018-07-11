@@ -36,6 +36,8 @@ render(){
             }
     } 
  )
+
+ console.log(projectGrid)
     return(
     <div>
         <div className="grid-container">

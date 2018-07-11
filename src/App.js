@@ -4,7 +4,7 @@ import { About, Contact } from './pages';
 import  Projects  from './projects';
 import './App.css';
 import firebase from 'firebase';
-import TestXHRConnection from './testXHRConnection';
+
 //import database from 'firebase/database';
 
 class App extends Component {
@@ -52,7 +52,7 @@ componentDidMount(){
       <Router>
       
         <div>
-          <TestXHRConnection />
+       
           <div id="navigation">
             <div  id="nav-button-container">
             <button  id="nav-button" onClick={this.showNav} ><i className="fas fa-bars"></i></button>

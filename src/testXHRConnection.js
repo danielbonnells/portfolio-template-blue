@@ -4,7 +4,10 @@ export default class TestXHRConnection extends Component{
    constructor(props){
        super(props)
 
-       this.state = {data: "Loading...", parent: null}
+       this.state = {
+           data: "Loading...", 
+           parent: null
+        }
        
    }
 
@@ -13,13 +16,13 @@ export default class TestXHRConnection extends Component{
         let xhr = new XMLHttpRequest();
       
 
-        xhr.open('GET', 'http://localhost:8888/wp-json/wp/v2/projects', true)
+        xhr.open('GET', 'http://localhost:8888/wp-json/wp/v2/projects?categories=2', true)
 
         
         xhr.onload = function(e){
         if (xhr.readyState === 4){
             if (xhr.status === 200){
-                //console.log(JSON.parse(this.responseText))
+                console.log(JSON.parse(this.responseText))
                 object.setState({
                     data: JSON.parse(this.responseText)[0].title.rendered,
                     parent: JSON.parse(this.responseText)[0].id
@@ -60,7 +63,7 @@ render(){
 
           console.log(data)
            this.setState({
-                image1: data[0].source_url,
+                image1: data[0].media_details.sizes.thumbnail.source_url,
                 image2: data[1].source_url
             })
         }
@@ -72,11 +75,10 @@ render(){
     
     return(
         <div className="responses">
-        <button>Get Data</button>
-            <div>{this.state.data}</div>
+            <div></div>
             <div>
-                <img src={this.state.image1} width="100px"/>
-                <img src={this.state.image2} width="100px"/>
+                <img src={"/"} width="100px"/>
+                <img src={"/"} width="100px"/>
                 </div>
         </div>
     )

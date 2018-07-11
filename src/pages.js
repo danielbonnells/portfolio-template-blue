@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-
+import GetDataFromWP from './getDataFromWP';
 
 
 export class About extends Component {
 
     render(){
         return(
+            <div>
             <h1>About</h1>
+            <GetDataFromWP />
+            </div>
         )
     }
     
