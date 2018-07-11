@@ -51,6 +51,7 @@ const Project = ({ match , data }) => {
                     }
                 )
             }
+            return allProjectsData
         }
     )
 

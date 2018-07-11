@@ -8,7 +8,7 @@ const Projects = (props) => {
 
     //waits for our data to get here
     if(props.data == ""){
-        console.log("Data is not ready. Waiting on state update.")
+        //console.log("Data is not ready. Waiting on state update.")
         return null
     } else{
 
