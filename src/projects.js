@@ -5,8 +5,14 @@ import { GetProductData } from './getProductData';
 
 
 const Projects = (props) => {
-       
-        const data = props.data
+
+    //waits for our data to get here
+    if(props.data == ""){
+        console.log("Data is not ready. Waiting on state update.")
+        return null
+    } else{
+
+        let theData = props.data
 
         return(
             <div>
@@ -16,19 +22,21 @@ const Projects = (props) => {
                         <div>
                             <div>
                                 <h3> Projects</h3>
-                                <GetProductData match={props.match} myProjects={data}/>
+                                <GetProductData match={props.match} myProjects={props.data}/>
                             </div>
                     </div>
                     )} />
-        
-                <Route path={`${props.match.url}/:id`} 
-                    render={ (props) => <Project data={data} {...props} />}/>
+                {/* path must match the 'projects' root and will then include a slug, also passed the data object from before */}
+                <Route path={`${props.match.url}/:slug`}
+                     
+                    render={ (props) => <Project data={theData} {...props} />}/>
 
                 <Redirect from='/projects/' to='/projects' />
 
             </Switch> 
             </div>
         )
+    }
     }
 
 export default Projects;

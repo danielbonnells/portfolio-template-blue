@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import firebase from 'firebase/app';
+
+/*import firebase from 'firebase/app';
 import database from 'firebase/database';
 
  // Initialize Firebase
@@ -15,7 +16,7 @@ import database from 'firebase/database';
     storageBucket: "",
     messagingSenderId: "946439793000"
   };
-  firebase.initializeApp(config);
+  firebase.initializeApp(config);*/
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

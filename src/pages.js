@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GetDataFromWP from './getDataFromWP';
+
 
 
 export class About extends Component {
@@ -8,7 +8,6 @@ export class About extends Component {
         return(
             <div>
             <h1>About</h1>
-            <GetDataFromWP />
             </div>
         )
     }

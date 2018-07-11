@@ -5,32 +5,32 @@ import {Link} from 'react-router-dom';
 
 
 export class GetProductData extends Component{
-
-    constructor(props) {
-        super(props);
-        this.state = {
-          
-        };
-      }
    
 render(){
 
     let projectGrid = this.props.myProjects.map( (project) => {
-       let number = project.id
 
-            if(number == 1){
-            return( <Link className="grid-1" to={`${this.props.match.url}/${project.id}`}>
-                   <div className="project-grid-image" style={{ backgroundImage: 'url("'+`${project.images.image1.source}`+'")'}}>
+       let slug = project.slug
+       let imageUrl = project.acf.image1.url
+       let size = project.acf.featured_project[0]
+       let matchUrl = this.props.match.url
+
+       // something along the lines of, if project has such a property, then it returns that project with a certain class, perhaps to show emphasis
+       // if (project.acf.featured_project[0] == 1) // it gets class "grid-1"
+
+            if(size == 1){
+            return( <Link className="grid-1" to={`${matchUrl}/${slug}`}>
+                   <div className="project-grid-image" style={{ backgroundImage: 'url("'+`${imageUrl}`+'")'}}>
                    </div></Link>
         )
-            } else if(number == 5){
-                return( <Link className="grid-5" to={`${this.props.match.url}/${project.id}`}>
-                <div className="project-grid-image" style={{ backgroundImage: 'url("'+`${project.images.image1.source}`+'")'}}>
+            } else if(size == 3){
+                return( <Link className="grid-5" to={`${matchUrl}/${slug}`}>
+                <div className="project-grid-image" style={{ backgroundImage: 'url("'+`${imageUrl}`+'")'}}>
                 </div></Link>
             )
             } else {
-                return( <Link className="zero" to={`${this.props.match.url}/${project.id}`}>
-                <div className="project-grid-image" style={{ backgroundImage: 'url("'+`${project.images.image1.source}`+'")'}}>
+                return( <Link className="zero" to={`${matchUrl}/${slug}`}>
+                <div className="project-grid-image" style={{ backgroundImage: 'url("'+`${imageUrl}`+'")'}}>
                 </div></Link>
             )
             }

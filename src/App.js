@@ -3,52 +3,80 @@ import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-do
 import { About, Contact } from './pages';
 import  Projects  from './projects';
 import './App.css';
-import firebase from 'firebase';
-
-//import database from 'firebase/database';
 
 class App extends Component {
   constructor(props){
     super(props)
 
+    //states for the navigation bar and for the project data
     this.state = {
       isNavOpen: false,
-      projects: []
+      data : ""
     }
+  
 }
-
+//displays or hides the navigation bar
 showNav = () => {
   this.setState({
     isNavOpen : !this.state.isNavOpen
   })
   
 }
+//updates the state with the data once fetched at componentDidMount via XMLHttpRequest
+handleState = (Data) =>{
+  this.setState({
+    data: Data
+  })
+}
+
 
 componentDidMount(){
-  const myProjects = firebase.database().ref('projects') 
+  //store the 'this' of the component
+  let object = this
+  //new request
+  let xhr = new XMLHttpRequest();
+  //request is made to fetch only projects that are in category "featured projects", which has id of 2 in wordpress
+  xhr.open('GET', 'http://localhost:8888/wp-json/wp/v2/projects?categories=2', true)
+  
+  xhr.onload = function(e){
+      if (xhr.readyState === 4){
+          if (xhr.status === 200){
+          //parse the response text
+          let res = JSON.parse(this.responseText)
+          //set an index to the data
+          let index = 0
+          //adds indexes to each project
+          let indexedData = res.map( (project) => { 
+              
+            project.index = index;
 
-  let handleState = (state) => {
-      this.setState({
-          projects: state
-      })
-    }
+            index++;
 
-  var arrayOfProjects = []
+            return project
 
-  myProjects.on('value', function(snapshot) {
-      snapshot.forEach(function(childSnapshot) {
-        var childData = childSnapshot.val();
-        arrayOfProjects.push(childData)
-        handleState(arrayOfProjects)
-        
-      });
-  });
+          });
+              //send data to the handler function, which sets state
+              object.handleState(indexedData)
+
+          } else {
+              console.error(xhr.statusText)
+          }
+      }
+  }
+
+  xhr.onerror = () => {
+      console.log('error')
+  }
+
+  xhr.send()
+
 }
 
 
   render() {
-
+  
     return (
+      //required for routes
       <Router>
       
         <div>
@@ -72,8 +100,9 @@ componentDidMount(){
           </div>
        <Switch>
           <Route path="/" exact render={() => <h1>Home Page</h1>}></Route>
+            {/* the match prop and the data from state are passed to the projects component */}
           <Route path="/projects" 
-                 render={(props) => <Projects {...props}  data={this.state.projects} />} 
+                 render={(props) => <Projects {...props}  data={this.state.data} />} 
             />
           <Route path="/about" exact component={About}></Route>
           <Route path="/contact" exact component={Contact}></Route>

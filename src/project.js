@@ -3,24 +3,76 @@ import ImageGallery from './image-gallery';
 import { Link } from 'react-router-dom'
 
 
-const Project = ({ match , data}) => {
+const Project = ({ match , data }) => {
 
-        let project = data.find(p => p.id == match.params.id);
-        
+    //takes all of the data fetched from props passed from projects
+    let allProjectsData = data.map( (project) => {
+        // finds all keys that match the regular expression filter and returns an array
+        if(project){
+            let filtered_keys = (obj, filter) => {
+            let key, keys = []
+            for (key in obj)
+            if (obj.hasOwnProperty(key) && filter.test(key))
+                keys.push(key)
+            return keys
+        }
+
+        let images = []
+        //call the filter for the image properties of the project object
+        let numOfProps = filtered_keys(project.acf, /(image)+/).length
+
+        //start at 1 because the images are named 'image1','image2', etc and end when there are no more images
+        for(let i = 1; i < numOfProps + 1; i++){
+            //set variables for the image properties that we might want to use, like sizes and alt text
+            let thumbnail = project.acf[`image${i}`].sizes.thumbnail
+            let medium = project.acf[`image${i}`].sizes.medium
+            let large = project.acf[`image${i}`].sizes.large
+            let alt = project.acf[`image${i}`].alt 
+            //creates an object at spot i - 1 in the array and sets all variables to those properties
+            images[i - 1] = {}
+
+            images[i - 1].thumbnail = thumbnail
+
+            images[i - 1].medium = medium
+
+            images[i - 1].large = large
+
+            images[i - 1].altText = alt
+            
+        }
+                // returns the entire object to the object array allProjectsData
+                return(
+                    {   "title": project.title.rendered,
+                        "index": project.index,
+                        "slug": project.slug,
+                        "images": images,
+                        "description": project.acf.project_description,
+                        "project_source": project.acf.project_source
+                    }
+                )
+            }
+        }
+    )
+
+        // match this project's slug to the slug used in the router, found in the match object that we passed
+        let project = allProjectsData.find(p => p.slug == match.params.slug);
+
+        //provides an initial state for projectData while data loads
         let projectData = <div><h1>Loading...</h1></div>;
-        
-    if(data.length > 1){
+
+    // makes sure that there is something here to load, otherwise projectData tells users there's nothing here     
+    if(data.length != 0){
         if(project) {
             projectData = <div className="project-container">
             <ImageGallery images={project.images}/>
             <div className="project-text-container">
             <ProjectTitle title={project.title}/>
-            <ProjectDescription desc={project.description} link={project.link} />
-            <ProjectControls id={project.id} numOfProjects={data.length} />
+            <ProjectDescription desc={project.description} link={project.project_source} />
+            <ProjectControls index={project.index} numOfProjects={allProjectsData.length} slug={project.slug} projects={allProjectsData}/>
             </div>
             </div>
             
-        } else{
+        } else {
             projectData = 
             <div>
                 <h2>Sorry. Project doesn't exist.</h2>
@@ -58,24 +110,27 @@ function ProjectDescription(props) {
 }//end component
 
 const ProjectControls = (props) =>{
-
-    if(props.id === 1){
+    //sets variables to compact
+    let slug = props.slug
+    let index = props.index
+    let projects = props.projects
+    if(index === 0){
         return (
             <div className="project-controls">
-                <Link to={`/projects/${props.id + 1}`}>Next Project</Link>
+                <Link to={`/projects/${projects[index + 1].slug}`}>Next Project</Link>
             </div>
             ) 
-    }else if(props.id === props.numOfProjects){
+    }else if(index === props.numOfProjects - 1){
         return( 
             <div className="project-controls">
-                <Link to={`/projects/${props.id - 1}`}>Previous Project</Link>
+                <Link to={`/projects/${projects[index - 1].slug}`}>Previous Project</Link>
             </div>
            )
-    }else if(props.id > 1){
+    }else if(index > 0){
         return(
             <div className="project-controls">
-                <Link to={`/projects/${props.id - 1}`}>Previous Project</Link>
-                <Link to={`/projects/${props.id + 1}`}>Next Project</Link>
+                <Link to={`/projects/${projects[index - 1].slug}`}>Previous Project</Link>
+                <Link to={`/projects/${projects[index + 1].slug}`}>Next Project</Link>
             </div>
             )       
     } else {

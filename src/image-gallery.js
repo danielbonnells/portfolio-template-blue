@@ -6,17 +6,15 @@ export default class ImageGallery extends Component{
     render(){
 
             const imageObject = this.props.images
-           
+
             let imageComponents = []
             
-            for (var i = 1; i < Object.keys(imageObject).length + 1; i++) {
+            for (var i = 0; i < imageObject.length; i++) {
     
                 imageComponents.push(
-                   <Image key={i} src={imageObject['image' + i].source} alt={imageObject['image' + i].altText} />
+                   <Image key={i} src={imageObject[i].large} alt={imageObject[i].altText} />
                 )
             }
-
-        
 
         return(
 
@@ -49,7 +47,6 @@ export class Image extends Component{
        
 
     render(){
-        
         
         
         return(
