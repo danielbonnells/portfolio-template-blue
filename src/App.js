@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 import { About, Contact } from './pages';
 import  Projects  from './projects';
+import  Modal  from './modal'
 import './App.css';
 
 class App extends Component {
@@ -73,8 +74,9 @@ componentDidMount(){
 }
 
 
+
   render() {
-  
+
     return (
       //required for routes
       <Router>
@@ -97,6 +99,8 @@ componentDidMount(){
                 </div>
               )}
             
+            <Modal />
+
           </div>
        <Switch>
           <Route path="/" exact render={() => <h1>Home Page</h1>}></Route>

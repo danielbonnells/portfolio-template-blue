@@ -113,11 +113,11 @@
  width: 100vw;
  height: 100vh;
  background-color: rgba(0, 0, 0, 0.8);
- position: absolute;
+ position: fixed;
  top: 0px;
  left: 0px;
 transform: translate3d(0,0,0);
-
+z-index: 1000;
 }
 .photo-div{
 

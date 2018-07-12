@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ImageGallery from './image-gallery';
 import { Link } from 'react-router-dom'
-import Modal from './modal'
+
 
 const Project = ({ match , data, w }) => {
 
@@ -64,13 +64,11 @@ const Project = ({ match , data, w }) => {
         //provides an initial state for projectData while data loads
         let projectData = <div><h1>Loading...</h1></div>;
 
-        
-
     // makes sure that there is something here to load, otherwise projectData tells users there's nothing here     
     if(data.length != 0){
         if(project) {
             projectData = <div className="project-container">
-            <Modal images={project.images} w={w}/>
+            <ImageGallery images={project.images} w={w}/>
             <div className="project-text-container">
             <ProjectTitle title={project.title}/>
             <ProjectDescription desc={project.description} link={project.project_source} />
