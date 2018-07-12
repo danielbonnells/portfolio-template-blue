@@ -36,7 +36,7 @@ componentDidMount(){
   //new request
   let xhr = new XMLHttpRequest();
   //request is made to fetch only projects that are in category "featured projects", which has id of 2 in wordpress
-  xhr.open('GET', 'http://localhost:8888/wp-json/wp/v2/projects?categories=2', true)
+  xhr.open('GET', 'http://api.danielbonnells.com/wp-json/wp/v2/projects?categories=2', true)
   
   xhr.onload = function(e){
       if (xhr.readyState === 4){

@@ -46,7 +46,7 @@ const Project = ({ match , data }) => {
                         "index": project.index,
                         "slug": project.slug,
                         "images": images,
-                        "description": project.acf.project_description,
+                        "description": project.content.rendered,
                         "project_source": project.acf.project_source
                     }
                 )
@@ -54,6 +54,7 @@ const Project = ({ match , data }) => {
             return allProjectsData
         }
     )
+
 
         // match this project's slug to the slug used in the router, found in the match object that we passed
         let project = allProjectsData.find(p => p.slug == match.params.slug);
@@ -103,11 +104,14 @@ export class ProjectTitle extends Component{
 }// end component
 
 function ProjectDescription(props) { 
-    return (<p className="project-description">{props.desc}<br/>
+    //takes the string in html that's coming from the JSON and makes an object out of it
+    const renderHTML = (rawHTML) => React.createElement("div", { dangerouslySetInnerHTML: { __html: rawHTML } });
+
+    return (<div className="project-description">{renderHTML(props.desc)}<br/>
             { props.link &&
             <a href={props.link} aria-label="Opens in a new tab" target="_blank" className="project-link">View the project online</a>
             }
-            </p>)
+            </div>)
 }//end component
 
 const ProjectControls = (props) =>{
