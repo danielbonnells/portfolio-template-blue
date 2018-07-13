@@ -12,10 +12,9 @@ export default class ImageGallery extends Component{
     render(){
 
             const imageObject = this.props.images
-            console.log(this.props.images)
+         
             let imageComponents = []
 
-            console.log(this.props)
             if(imageObject != undefined){
             for (var i = 0; i < imageObject.length; i++) {
     
@@ -50,16 +49,14 @@ export class Image extends Component{
         }
            //provides image for gallery based on window size
        if(w < 480){
-        console.log(w)
-            imageProcessed.source = imageProcessed.source.thumbnail
-        }else if(400 < w && w < 800){
-            console.log(w)
-            imageProcessed.source = imageProcessed.source.medium
+             imageProcessed.source = imageProcessed.source.thumbnail
+        }else if(400 <= w && w <= 800){
+          imageProcessed.source = imageProcessed.source.medium
         }else if(800 < w){
-            console.log(w)
             imageProcessed.source = imageProcessed.source.large
         }
-        
+
+       console.log(w)
         return(
            <div className="image-single-container"> 
             

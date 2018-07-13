@@ -16,8 +16,7 @@ constructor(props){
 }
 
 imageModalHandler = (args) =>{
-    console.log("here are args:")
-    console.log(args)
+
     this.setState({
         imageModal : this.state.imageModal ? false : true,
         currentImage: args,
@@ -27,8 +26,7 @@ imageModalHandler = (args) =>{
 
 
 render(){
-    console.log("here are props:")
- console.log(this.props)
+   
     return(<div>
                 {this.state.imageModal &&
                 <div className="fullscreen">

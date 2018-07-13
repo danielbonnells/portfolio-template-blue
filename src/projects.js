@@ -13,7 +13,7 @@ const Projects = (props) => {
     } else{
         let width = window.innerWidth
         let theData = props.data
-        console.log(theData)
+
         return(
             <div>
             <Switch>
