@@ -39,29 +39,33 @@ export class Image extends Component{
    
     render(){
         let w = this.props.w
-        let image = {
+        let imageOriginal = {
+            "source": this.props.src.large,
+            "alt": this.props.alt
+        }
+
+        let imageProcessed = {
             "source": this.props.src,
             "alt": this.props.alt
         }
-        
            //provides image for gallery based on window size
        if(w < 480){
         console.log(w)
-            image.source = image.source.thumbnail
+            imageProcessed.source = imageProcessed.source.thumbnail
         }else if(400 < w && w < 800){
             console.log(w)
-            image.source = image.source.medium
+            imageProcessed.source = imageProcessed.source.medium
         }else if(800 < w){
             console.log(w)
-            image.source = image.source.large
+            imageProcessed.source = imageProcessed.source.large
         }
         
         return(
            <div className="image-single-container"> 
             
-                <button className="image-single" onClick={() => this.props.handleState(image)}>
+                <button className="image-single" onClick={() => this.props.handleState(imageOriginal)}>
 
-                    <img alt={image.alt} src={image.source} />
+                    <img alt={imageProcessed.alt} src={imageProcessed.source} />
 
                 </button>
      

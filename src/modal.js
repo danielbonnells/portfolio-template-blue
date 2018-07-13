@@ -20,7 +20,7 @@ imageModalHandler = (args) =>{
     console.log(args)
     this.setState({
         imageModal : this.state.imageModal ? false : true,
-        currentImage: args.url,
+        currentImage: args,
         previousImage: ""
     })
  }
@@ -34,7 +34,7 @@ render(){
                 <div className="fullscreen">
                     <div className="photo-div">
                         <button onClick={this.imageModalHandler} className="close-btn fadeItIn" title="Close">Close</button>
-                        <FocusImage source={this.state.currentImage} altText={this.state.currentImage.source} />
+                        <FocusImage source={this.state.currentImage.source} altText={this.state.currentImage.alt} />
                     </div>
                 </div>}
 
