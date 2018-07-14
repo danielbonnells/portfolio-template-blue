@@ -3,23 +3,31 @@ import React, { Component } from 'react';
 
 export default class ImageGallery extends Component{
 
+    constructor(props){
+        super(props)
+
+    }
+
+   
     render(){
 
             const imageObject = this.props.images
-
+         
             let imageComponents = []
-            
+
+            if(imageObject != undefined){
             for (var i = 0; i < imageObject.length; i++) {
     
                 imageComponents.push(
-                   <Image key={i} src={imageObject[i].large} alt={imageObject[i].altText} />
+                   <Image key={i} src={imageObject[i]} w={this.props.w} alt={imageObject[i].altText} handleState={this.props.handleState}/>
                 )
             }
-
+        }
         return(
 
             <div className="image-gallery">
                {imageComponents}
+
             </div>
         )
     }
@@ -27,45 +35,36 @@ export default class ImageGallery extends Component{
 
 export class Image extends Component{
 
-        constructor(props){
-            super(props)
-
-            this.state = {
-                imageModal : false,
-            }
-
-            this.imageModalHandler = this.imageModalHandler.bind(this)
+   
+    render(){
+        let w = this.props.w
+        let imageOriginal = {
+            "source": this.props.src.large,
+            "alt": this.props.alt
         }
 
-        imageModalHandler = () =>{
-     
-            this.setState({
-                imageModal : this.state.imageModal ? false : true
-            })
-         }
+        let imageProcessed = {
+            "source": this.props.src,
+            "alt": this.props.alt
+        }
+           //provides image for gallery based on window size
+       if(w < 480){
+             imageProcessed.source = imageProcessed.source.thumbnail
+        }else if(400 <= w && w <= 800){
+          imageProcessed.source = imageProcessed.source.medium
+        }else if(800 < w){
+            imageProcessed.source = imageProcessed.source.large
+        }
 
-       
-
-    render(){
-        
-        
+       console.log(w)
         return(
            <div className="image-single-container"> 
             
-                <button className="image-single" onClick={this.imageModalHandler}>
+                <button className="image-single" onClick={() => this.props.handleState(imageOriginal)}>
 
-                    <img alt={this.props.alt} src={this.props.src} />
+                    <img alt={imageProcessed.alt} src={imageProcessed.source} />
 
                 </button>
-
-                {this.state.imageModal  && (
-                    <div className="fullscreen">
-                        <div className="photo-div">
-                            <button onClick={this.imageModalHandler} className="close-btn fadeItIn" title="Close">Close</button>
-                            <FocusImage source={this.props.src} altText={this.props.alt} />
-                        </div>
-                    </div>
-                    )}
      
            </div>
         )

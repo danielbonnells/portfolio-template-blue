@@ -1,7 +1,8 @@
 
 :root{
   --primary-color : #293E60;
-  
+  --secondary-color : #5D6A7F;
+  --darker-color: #0A234B;
 }
 #navigation{
   z-index: 900;
@@ -32,6 +33,8 @@
   color: #6DA5FF;
   text-decoration: none;
 }
+
+
 @keyframes dropItDown{
   from { top: -100px;}
   to {top: 50px;}
@@ -112,26 +115,26 @@
 .fullscreen{
  width: 100vw;
  height: 100vh;
- background-color: rgba(0, 0, 0, 0.8);
- position: absolute;
+ background-color: white;
+ position: fixed;
  top: 0px;
  left: 0px;
 transform: translate3d(0,0,0);
-
+z-index: 1000;
 }
-.photo-div{
-
+.photo-container{
+height: 70vh;
 
 }
 
 .photo{
   position: relative;
   margin: 0 auto;
-  /*transform: translateY(-30%);*/
-  transform: translate(-50%, 30%);
+  top: 10vh;
+  transform: translateX(-50%);
   left: 50%;
-  max-width: 100vw;
-
+  max-width: 100%;
+max-height: 100%
 }
 
 .fadeItIn{
@@ -148,7 +151,7 @@ transform: translate3d(0,0,0);
 
 .close-btn{
   position: relative;
-  top: 10vh;
+  top: 5vh;
   transform: translate(-50%, 30%);
   left: 50%;
   z-index: 110;
@@ -160,9 +163,9 @@ transform: translate3d(0,0,0);
   margin-left: 20px;
   margin-right: 50px;
   color: white;
-
+  font-size: 1.3em;
 }
-.project-description{
+.paragraph{
   padding: 0px 20px 0px 40px;
 }
 .project-controls{
@@ -171,16 +174,20 @@ transform: translate3d(0,0,0);
   margin-right: 50px;
   text-align: right;
 }
-.project-controls a{
+.pro-cont-link{
   background-color: var(--primary-color);
   padding: 10px 20px 10px 10px;
   margin-left: 10px;
   margin-bottom: 10px;
   color: white;
-  width: 20%;
   width: 125px;
   display: inline-block;
   text-align: left;
+  text-decoration: none;
+  line-height:  1em;
+}
+.pro-cont-link:hover, .pro-cont-link:focus{
+background-color: var(--darker-color)
 }
 .project-link{
   color: grey;
@@ -190,7 +197,9 @@ transform: translate3d(0,0,0);
   cursor: pointer;
   display: block;
   margin-top: 5px;
-
+}
+.project-link:hover, .project-link:focus{
+  color: var(--darker-color);
 }
 .grid-container {
   display: grid;
@@ -232,11 +241,70 @@ transform: translate3d(0,0,0);
   padding-bottom:56.25%;
   position:relative;
   height:0;
+  max-width: 500px;
+  max-height: 285px;
 }
 .video-responsive iframe{
   left:0;
   top:0;
   height:100%;
   width:100%;
+  max-width: 500px;
+  max-height: 285px;
   position:absolute;
+}
+
+/*--------About Page -------------*/
+
+.about-container p{
+  padding: 0px 20px 0px 40px;
+}
+
+@media screen and (min-width: 37.5em){
+  .about-container p{
+    padding: 50px;
+  }
+  
+}
+
+
+@media screen and (min-width: 37.5em){
+  .project-title h1{
+    font-size: 2em;
+  }
+  
+}
+
+/* ------- Home Page --------- */
+.hero {
+  height: calc(100vh - 50px);
+  background: blue;
+}
+.definitions{
+  margin: 0;
+}
+.definitions button{
+  text-align: left;
+  font-size: 1.3em;
+  border: none;
+  background: none;
+  outline: none;
+}
+.definitions button:focus > span{
+  border-bottom: .1em solid var(--darker-color);
+}
+.definitions li{
+  list-style: none;
+  margin-bottom: 1em;
+}
+.definitions p{
+  animation: definition 1s ease-in-out;
+  font-size: .7em;
+  padding: 10px;
+  
+}
+
+@keyframes definition {
+  from { opacity: 0;}
+  to {opacity: 1;}
 }

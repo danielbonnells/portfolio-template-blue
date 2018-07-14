@@ -11,7 +11,7 @@ const Projects = (props) => {
         //console.log("Data is not ready. Waiting on state update.")
         return null
     } else{
-
+        let width = window.innerWidth
         let theData = props.data
 
         return(
@@ -21,15 +21,16 @@ const Projects = (props) => {
                     render={() => (
                         <div>
                             <div>
-                                <h3> Projects</h3>
-                                <GetProductData match={props.match} myProjects={props.data}/>
+                                <div className="project-title"><h1>Projects</h1></div>
+                                <p className="paragraph">Below are some of the projects that best demonstrate my abilities at this point.</p>
+                                <GetProductData match={props.match} myProjects={props.data} w={width}/>
                             </div>
                     </div>
                     )} />
                 {/* path must match the 'projects' root and will then include a slug, also passed the data object from before */}
                 <Route path={`${props.match.url}/:slug`}
                      
-                    render={ (props) => <Project data={theData} {...props} />}/>
+                    render={ (props) => <Project data={theData} w={width} {...props} />}/>
 
                 <Redirect from='/projects/' to='/projects' />
 

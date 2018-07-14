@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ImageGallery from './image-gallery';
 import { Link } from 'react-router-dom'
-import Modal from './modal'
+
 
 const Project = ({ match , data, w }) => {
 
@@ -64,13 +64,11 @@ const Project = ({ match , data, w }) => {
         //provides an initial state for projectData while data loads
         let projectData = <div><h1>Loading...</h1></div>;
 
-        
-
     // makes sure that there is something here to load, otherwise projectData tells users there's nothing here     
     if(data.length != 0){
         if(project) {
             projectData = <div className="project-container">
-            <Modal images={project.images} w={w}/>
+            <ImageGallery images={project.images} w={w}/>
             <div className="project-text-container">
             <ProjectTitle title={project.title}/>
             <ProjectDescription desc={project.description} link={project.project_source} />
@@ -111,7 +109,7 @@ function ProjectDescription(props) {
     //takes the string in html that's coming from the JSON and makes an object out of it
     const renderHTML = (rawHTML) => React.createElement("div", { dangerouslySetInnerHTML: { __html: rawHTML } });
 
-    return (<div className="paragraph">{renderHTML(props.desc)}<br/>
+    return (<div className="project-description">{renderHTML(props.desc)}<br/>
             { props.link &&
             <a href={props.link} aria-label="Opens in a new tab" target="_blank" className="project-link">View the project online</a>
             }
@@ -126,20 +124,20 @@ const ProjectControls = (props) =>{
     if(index === 0){
         return (
             <div className="project-controls">
-                <Link to={`/projects/${projects[index + 1].slug}`} className="pro-cont-link">Next Project</Link>
+                <Link to={`/projects/${projects[index + 1].slug}`}>Next Project</Link>
             </div>
             ) 
     }else if(index === props.numOfProjects - 1){
         return( 
             <div className="project-controls">
-                <Link to={`/projects/${projects[index - 1].slug}`} className="pro-cont-link">Previous Project</Link>
+                <Link to={`/projects/${projects[index - 1].slug}`}>Previous Project</Link>
             </div>
            )
     }else if(index > 0){
         return(
             <div className="project-controls">
-                <Link to={`/projects/${projects[index - 1].slug}`} className="pro-cont-link">Previous Project</Link>
-                <Link to={`/projects/${projects[index + 1].slug}`} className="pro-cont-link">Next Project</Link>
+                <Link to={`/projects/${projects[index - 1].slug}`}>Previous Project</Link>
+                <Link to={`/projects/${projects[index + 1].slug}`}>Next Project</Link>
             </div>
             )       
     } else {
