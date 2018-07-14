@@ -21,7 +21,8 @@ const Projects = (props) => {
                     render={() => (
                         <div>
                             <div>
-                                <h3> Projects</h3>
+                                <div className="project-title"><h1>Projects</h1></div>
+                                <p className="paragraph">Below are some of the projects that best demonstrate my abilities at this point.</p>
                                 <GetProductData match={props.match} myProjects={props.data} w={width}/>
                             </div>
                     </div>

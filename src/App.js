@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
-import { About, Contact } from './pages';
+import { About, Contact, HomePage } from './pages';
 import  Projects  from './projects';
 import  Modal  from './modal'
 import './App.css';
@@ -99,11 +99,11 @@ componentDidMount(){
                 </div>
               )}
             
-            <Modal />
+          
 
           </div>
        <Switch>
-          <Route path="/" exact render={() => <h1>Home Page</h1>}></Route>
+          <Route path="/" exact component={HomePage}></Route>
             {/* the match prop and the data from state are passed to the projects component */}
           <Route path="/projects" 
                  render={(props) => <Projects {...props}  data={this.state.data} />} 
