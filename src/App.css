@@ -6,8 +6,9 @@
 }
 #navigation{
   z-index: 900;
-  height: 50px;
-   width: 100vw; 
+  height: 10vh;
+  max-height: 100px;
+   
 }
 .nav-links-container{
   position: absolute;
@@ -36,15 +37,15 @@
 
 
 @keyframes dropItDown{
-  from { top: -100px;}
-  to {top: 50px;}
+  from { top: -300px;}
+  to {top: 0px;}
 }
 #nav-button-container{
-  background-color: var(--primary-color);
-  width: 100vw;
+  
+  width: 100%;
 
    z-index: 1000;
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.303);
+    
     float: left;
 }
 #nav-button{
@@ -52,10 +53,10 @@
  width: 50px;
  height: 50px;
  z-index: 1010;
- left: calc(100% - 50px);
+ left: calc(100% - 5.5em);
  border: none;
  background: none;
- color: white;
+ color: pink;
 }
 
 #nav-button i {
@@ -277,28 +278,52 @@ background-color: var(--darker-color)
 
 /* ------- Home Page --------- */
 .hero {
-  height: calc(100vh - 50px);
-  background: blue;
+  position: absolute;
+  top:0px;
+  width: 100vw;
+  height: calc(100vh);
+  z-index: 0;
+  background: rgb(164, 156, 163);
+  
+}
+.hero-content{
+  position: relative;
+  height: 90vh;
+ 
+}
+.post-hero{
+  position: relative;
 }
 .definitions{
   margin: 0;
 }
 .definitions button{
   text-align: left;
-  font-size: 1.3em;
+  font-size: 1.5em;
   border: none;
   background: none;
   outline: none;
+  color: white;
 }
-.definitions button:focus > span{
+.definition-title{
+  font-weight: 900;
+  line-height: 1em;
+}
+.definition-title::after{
+  color: var(--primary-color);
+  font-size: 1em;
+  content: "&"
+}
+.definitions button:focus .definition-title{
   border-bottom: .1em solid var(--darker-color);
 }
+
 .definitions li{
   list-style: none;
-  margin-bottom: 1em;
+  margin-bottom: 0.2em;
 }
 .definitions p{
-  animation: definition 1s ease-in-out;
+  animation: definition .5s ease-in-out;
   font-size: .7em;
   padding: 10px;
   

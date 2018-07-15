@@ -82,7 +82,7 @@ componentDidMount(){
       <Router>
       
         <div>
-       
+        
           <div id="navigation">
             <div  id="nav-button-container">
             <button  id="nav-button" onClick={this.showNav} ><i className="fas fa-bars"></i></button>
@@ -102,7 +102,7 @@ componentDidMount(){
           
 
           </div>
-       <Switch>
+          <Switch>
           <Route path="/" exact component={HomePage}></Route>
             {/* the match prop and the data from state are passed to the projects component */}
           <Route path="/projects" 

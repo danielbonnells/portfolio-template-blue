@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Definitions, Definition } from './definitions';
 
+
 export class About extends Component {
 
     render(){
@@ -30,14 +31,22 @@ export class Contact extends Component {
 export class HomePage extends Component {
 
     render(){
+        let fill = 'E50000'
+
         return(
             <div className="home-container">
                 <div className="hero">
-                    <Definitions />
-                <button>Sounds good? Let's Work Together</button>
-                
+
+
                 </div>
-                <div><p>Hello</p></div>
+                <div className="hero-content">
+                    <Definitions />
+                    <button><Link to="/contact">Sounds good? Let's Work Together</Link></button>
+                    </div>
+                    
+             <div className="post-hero">
+             <p>Hello</p></div>
+                
             </div>
         )
     }
