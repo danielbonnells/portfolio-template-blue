@@ -85,7 +85,7 @@ componentDidMount(){
         
           <div id="navigation">
             <div  id="nav-button-container">
-            <button  id="nav-button" onClick={this.showNav} ><i className="fas fa-bars"></i></button>
+            <button  id="nav-button" label="Navigation Menu" onClick={this.showNav} ><i className="fas fa-bars"></i></button>
             </div>
 
               {this.state.isNavOpen  && (

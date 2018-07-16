@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Definitions, Definition } from './definitions';
-
+import { Definitions } from './definitions';
+import herovid from './herobluegreyloop.mp4';
+import herowebm from './herowebm.webm';
+import heroposter from './heroposter.png';
 
 export class About extends Component {
 
@@ -31,22 +33,30 @@ export class Contact extends Component {
 export class HomePage extends Component {
 
     render(){
-        let fill = 'E50000'
+        document.addEventListener("touchstart", function(){}, true);
 
         return(
+            <div>
             <div className="home-container">
-                <div className="hero">
+               
+                <video poster={heroposter} style={{minWidth: '100%', position: 'absolute', minHieght: '100vh', maxHeight: '100%', top: '50%', left:'50%', zIndex: '-1', transform: "translateX(-50%) translateY(-50%)"}} autoplay="autoplay" loop="loop" muted="">
+                    <source src={herowebm}type="video/webm" />
+                    <source src={herovid}type="video/mp4" />
+                </video>
 
-
-                </div>
+              
                 <div className="hero-content">
                     <Definitions />
-                    <button><Link to="/contact">Sounds good? Let's Work Together</Link></button>
+                    <div className="cta-container">
+                    <button className="cta-home-1"><Link to="/contact">Contact Me</Link></button>
                     </div>
-                    
-             <div className="post-hero">
+                    </div>
+                        
+            </div>
+
+            <div className="post-hero">
              <p>Hello</p></div>
-                
+
             </div>
         )
     }

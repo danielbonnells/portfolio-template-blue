@@ -56,7 +56,7 @@ const Project = ({ match , data, w }) => {
             return allProjectsData
         }
     )
-
+      
 
         // match this project's slug to the slug used in the router, found in the match object that we passed
         let project = allProjectsData.find(p => p.slug == match.params.slug);

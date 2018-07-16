@@ -3,6 +3,7 @@
   --primary-color : #293E60;
   --secondary-color : #5D6A7F;
   --darker-color: #0A234B;
+  --lighter-color: rgb(120, 135, 160);
 }
 #navigation{
   z-index: 900;
@@ -17,7 +18,7 @@
   animation-duration: .5s;
   
   animation-fill-mode: forwards;
-  background-color: var(--primary-color);
+  background-color: var(--darker-color);
   z-index: 900;
 }
 .nav-links{
@@ -31,7 +32,7 @@
   line-height: 2em;
 }
 .nav-links a{
-  color: #6DA5FF;
+  color: white;
   text-decoration: none;
 }
 
@@ -50,13 +51,13 @@
 }
 #nav-button{
  position: relative;
- width: 50px;
- height: 50px;
  z-index: 1010;
- left: calc(100% - 5.5em);
+ left: calc(100% - 4em);
  border: none;
  background: none;
- color: pink;
+ color: var(--primary-color);
+ font-size: 1em;
+ margin-top: 1em;
 }
 
 #nav-button i {
@@ -65,7 +66,7 @@
 
 }
 #nav-button:hover, #nav-button:focus {
- color: #6DA5FF;
+ color: white;
 }
 
 
@@ -277,59 +278,118 @@ background-color: var(--darker-color)
 }
 
 /* ------- Home Page --------- */
-.hero {
-  position: absolute;
-  top:0px;
-  width: 100vw;
-  height: calc(100vh);
+.home-container{
+  position: relative;
+  top:-66px;
+  margin-bottom: -66px;
+  width: 100%;
+ min-height: 100vh;
   z-index: 0;
   background: rgb(164, 156, 163);
-  
+  overflow-x: hidden;
+  background-color: pink;
 }
+/*.hero {
+  position: absolute;
+  top:0px;
+  width: 100%;
+ min-height: 100vh;
+  z-index: 0;
+  background: rgb(164, 156, 163);
+  overflow: hidden;
+  background-color: pink;
+}*/
 .hero-content{
   position: relative;
-  height: 90vh;
+  min-height: 90vh;
+  z-index: 10;
+  margin-top: 70px;
+  
  
 }
 .post-hero{
   position: relative;
 }
 .definitions{
+  position: relative;
   margin: 0;
+  padding-left: 20px;
+  color: white;
 }
 .definitions button{
   text-align: left;
-  font-size: 1.5em;
+  font-size: 2em;
   border: none;
   background: none;
   outline: none;
   color: white;
-}
-.definition-title{
-  font-weight: 900;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  padding: 0;
   line-height: 1em;
 }
-.definition-title::after{
-  color: var(--primary-color);
-  font-size: 1em;
-  content: "&"
+
+
+.definitions button:focus, .definitions button:active, .definitions button:hover{
+  
 }
-.definitions button:focus .definition-title{
-  border-bottom: .1em solid var(--darker-color);
+.definitions button:focus, .definitions button:active{
+  background:  var(--darker-color);
+}
+
+.definition-title{
+  font-weight: 900;
+  display: inline;
+  margin: 0;
+  font-size: 1em;
+  line-height: .4em;
+}
+.definition-title::after{
+  color: white;
+  font-size: 1em;
+  content: "&";
+  opacity: 0.3;
 }
 
 .definitions li{
   list-style: none;
-  margin-bottom: 0.2em;
+  
+  
 }
 .definitions p{
+  border-top: .3em solid white;
   animation: definition .5s ease-in-out;
-  font-size: .7em;
-  padding: 10px;
-  
+  font-size: 1em;
+  font-weight: 900;
+  padding: 10px 20px 10px 10px;
+  margin: .5em 1.5em;
+  background-color: rgba(10, 35, 75, 0.8)
 }
 
 @keyframes definition {
   from { opacity: 0;}
   to {opacity: 1;}
+}
+.cta-container{
+
+  
+  margin: .8em 50px 20px 20px;
+ padding: 0px;
+}
+.cta-home-1{
+  position: relative;
+  border: none;
+  background: none;
+  padding: 0;
+  width: 100%;
+  max-width: 425px;
+  text-align: left;
+}
+.cta-home-1 a{
+  display: block;
+  text-decoration: none;
+  background-color: var(--primary-color);
+  padding: .7em .7em;
+  color: white;
+  font-size: 1.5em;
+  font-weight: 900;
 }
