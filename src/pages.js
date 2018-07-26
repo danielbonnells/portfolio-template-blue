@@ -39,18 +39,12 @@ export class HomePage extends Component {
             <div>
             <div className="home-container">
                
-                <video poster={heroposter} style={{minWidth: '100%', position: 'absolute', minHieght: '100vh', maxHeight: '100%', top: '50%', left:'50%', zIndex: '-1', transform: "translateX(-50%) translateY(-50%)"}} autoPlay="autoplay" loop="loop" muted="">
-                    <source src={herowebm}type="video/webm" />
-                    <source src={herovid}type="video/mp4" />
-                </video>
-
-              
                 <div className="hero-content">
                     <Definitions />
                     <div className="cta-container">
-                    <button className="cta-home-1"><Link to="/contact">Contact Me</Link></button>
+                     {/* <button className="cta-home-1"><Link to="/contact">Contact Me</Link></button> */}
                     </div>
-                    </div>
+                </div>
                         
             </div>
 

@@ -17,7 +17,9 @@ class App extends Component {
   
 }
 //displays or hides the navigation bar
-showNav = () => {
+showNav = () => { 
+let nlc = document.getElementById("nav-links-container");
+nlc.className += ' active'
   this.setState({
     isNavOpen : !this.state.isNavOpen
   })
@@ -89,7 +91,7 @@ componentDidMount(){
             </div>
 
               {this.state.isNavOpen  && (
-                <div className="nav-links-container">
+                <div className="nav-links-container" id="nav-links-container">
                   <ul className="nav-links">
                       <li><NavLink to="/" exact activeStyle={activeStyle} onClick={this.showNav}>Home</NavLink></li>
                       <li><NavLink to="/projects" activeStyle={activeStyle} onClick={this.showNav}>Projects</NavLink></li>

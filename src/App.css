@@ -9,14 +9,15 @@
   z-index: 900;
   height: 10vh;
   max-height: 100px;
-   
+  position: relative;
+  width: 100%;
 }
 .nav-links-container{
-  position: absolute;
+  position: fixed;
   width: 100%;
+  height: 100vh;
   animation: dropItDown;
-  animation-duration: .5s;
-  
+  animation-duration: .25s;
   animation-fill-mode: forwards;
   background-color: var(--darker-color);
   z-index: 900;
@@ -36,23 +37,20 @@
   text-decoration: none;
 }
 
-
 @keyframes dropItDown{
-  from { top: -300px;}
+  from { top: -100vh;}
   to {top: 0px;}
 }
 #nav-button-container{
-  
+  position: relative;
   width: 100%;
-
-   z-index: 1000;
-    
-    float: left;
+  z-index: 1000;
+  float: left;
 }
 #nav-button{
- position: relative;
+ position: absolute;
  z-index: 1010;
- left: calc(100% - 4em);
+ right: 10px;
  border: none;
  background: none;
  color: var(--primary-color);
@@ -258,8 +256,12 @@ background-color: var(--darker-color)
 
 /*--------About Page -------------*/
 
+.about-container {
+  position: relative;
+}
 .about-container p{
   padding: 0px 20px 0px 40px;
+  
 }
 
 @media screen and (min-width: 37.5em){
@@ -280,14 +282,12 @@ background-color: var(--darker-color)
 /* ------- Home Page --------- */
 .home-container{
   position: relative;
-  top:-66px;
-  margin-bottom: -66px;
   width: 100%;
- min-height: 100vh;
+  min-height: 100vh;
   z-index: 0;
-  background: rgb(164, 156, 163);
+  /* background: rgb(164, 156, 163); */
   overflow-x: hidden;
-  background-color: pink;
+  
 }
 /*.hero {
   position: absolute;
@@ -303,7 +303,7 @@ background-color: var(--darker-color)
   position: relative;
   min-height: 90vh;
   z-index: 10;
-  margin-top: 70px;
+  margin-top: 1em;
   
  
 }
@@ -322,10 +322,12 @@ background-color: var(--darker-color)
   border: none;
   background: none;
   outline: none;
-  color: white;
+  color: var(--primary-color);
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   padding: 0;
   line-height: 1em;
+  border-bottom: 0px solid var(--lighter-color);
+  transition: border-bottom .25s ease-in;
 }
 
 
@@ -333,7 +335,7 @@ background-color: var(--darker-color)
   
 }
 .definitions button:focus, .definitions button:active{
-  background:  var(--darker-color);
+  border-bottom: 3px solid var(--lighter-color);
 }
 
 .definition-title{
@@ -344,7 +346,7 @@ background-color: var(--darker-color)
   line-height: .4em;
 }
 .definition-title::after{
-  color: white;
+  color: var(--lighter-color);
   font-size: 1em;
   content: "&";
   opacity: 0.3;
