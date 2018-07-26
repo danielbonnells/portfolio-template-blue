@@ -4,6 +4,13 @@
   --secondary-color : #5D6A7F;
   --darker-color: #0A234B;
   --lighter-color: rgb(120, 135, 160);
+  
+  
+}
+body{font-family: 'Roboto', sans-serif;}
+h1{
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
 }
 #navigation{
   z-index: 900;
@@ -19,7 +26,7 @@
   animation: dropItDown;
   animation-duration: .25s;
   animation-fill-mode: forwards;
-  background-color: var(--darker-color);
+  background-color: var(--lighter-color);
   z-index: 900;
 }
 .nav-links{
@@ -31,6 +38,11 @@
   list-style: none;
   font-size: 1.5em;
   line-height: 2em;
+  font-family: 'Roboto', sans-serif;
+}
+.nav-links li{
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
 }
 .nav-links a{
   color: white;
@@ -56,6 +68,7 @@
  color: var(--primary-color);
  font-size: 1em;
  margin-top: 1em;
+ outline: none;
 }
 
 #nav-button i {
@@ -64,7 +77,8 @@
 
 }
 #nav-button:hover, #nav-button:focus {
- color: white;
+ color: var(--secondary-color);
+ border: 2px solid var(--primary-color)
 }
 
 
@@ -314,7 +328,8 @@ background-color: var(--darker-color)
   position: relative;
   margin: 0;
   padding-left: 20px;
-  color: white;
+  color: var(--secondary-color);
+ 
 }
 .definitions button{
   text-align: left;
@@ -324,22 +339,23 @@ background-color: var(--darker-color)
   outline: none;
   color: var(--primary-color);
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  padding: 0;
+  padding: .2em;
   line-height: 1em;
-  border-bottom: 0px solid var(--lighter-color);
-  transition: border-bottom .25s ease-in;
+ cursor: pointer;
 }
 
 
 .definitions button:focus, .definitions button:active, .definitions button:hover{
   
 }
-.definitions button:focus, .definitions button:active{
-  border-bottom: 3px solid var(--lighter-color);
+.definitions button:focus, .definitions button:active, .definitions button:hover{
+  background-color: var(--darker-color);
+  color: white;
 }
 
 .definition-title{
-  font-weight: 900;
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
   display: inline;
   margin: 0;
   font-size: 1em;
@@ -352,28 +368,52 @@ background-color: var(--darker-color)
   opacity: 0.3;
 }
 
+sup {
+  line-height: 1px;
+  display: inline-block;
+}
+sup a{
+  
+  text-decoration: underline;
+  color: var(--primary-color);
+}
+sup a:hover, sup a:focus,{
+  outline: 1px solid black; 
+}
+
 .definitions li{
   list-style: none;
   
   
 }
+/* .definition-collapsed{
+  display: none;
+}*/
+.definition-expanded{
+  display: block;
+  overflow: hidden;
+} 
 .definitions p{
-  border-top: .3em solid white;
-  animation: definition .5s ease-in-out;
+  border-top: .2em solid var(--secondary-color);
+  animation: definition .25s ease-in-out;
+  animation-fill-mode: forwards;
   font-size: 1em;
-  font-weight: 900;
+  font-weight: 400;
   padding: 10px 20px 10px 10px;
   margin: .5em 1.5em;
-  background-color: rgba(10, 35, 75, 0.8)
+  position: relative;
+  font-family: 'Roboto', cursive;
+  font-style: italic;
+  
+  
 }
 
 @keyframes definition {
-  from { opacity: 0;}
-  to {opacity: 1;}
+  0% {opacity: 0; top: -100px;}
+  30% {opacity: 0;}
+  100% {opacity: 1; transform: scale(1); top: 0px;}
 }
 .cta-container{
-
-  
   margin: .8em 50px 20px 20px;
  padding: 0px;
 }

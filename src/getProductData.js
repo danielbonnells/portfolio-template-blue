@@ -17,13 +17,13 @@ render(){
     
         //provides image for grid based on window size
        if(w < 480){
-        console.log(w)
+        //console.log(w)
             imageUrl = imageUrl.thumbnail
         }else if(400 < w && w < 800){
-            console.log(w)
+            //console.log(w)
             imageUrl = imageUrl.medium
         }else if(800 < w){
-            console.log(w)
+            //console.log(w)
             imageUrl = imageUrl.large
         }
        let slug = project.slug

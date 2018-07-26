@@ -18,8 +18,6 @@ class App extends Component {
 }
 //displays or hides the navigation bar
 showNav = () => { 
-let nlc = document.getElementById("nav-links-container");
-nlc.className += ' active'
   this.setState({
     isNavOpen : !this.state.isNavOpen
   })
@@ -122,7 +120,9 @@ componentDidMount(){
 
 const activeStyle = {
   color: "white",
-  textDecoration: "underline"
+  textDecoration: "underline",
+  fontFamily: "Anton, 'sans-serif'",
+  fontWeight: "bold"
 }
 
 export default App;

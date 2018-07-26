@@ -45,11 +45,13 @@ export class Definition extends Component{
         super(props)
         //boolean for checking if the current value is equal to its index value
         this.state = {
-            isOpen: false
+            isOpen: false,
+        
         }
     }
     //sends its index to parent
     handleClick = () => {
+        
         let index = this.props.index
         this.props.handleCurrent(index)
     }
@@ -59,6 +61,7 @@ export class Definition extends Component{
         if(this.state.isOpen){
             this.setState({
                 isOpen: false,
+           
             })
             //if the state is false and the current prop matches its index, true, else set to false
             //other children who are not the current child get closed here
@@ -66,10 +69,12 @@ export class Definition extends Component{
             if(props.index == props.current){
                 this.setState({
                     isOpen: true,
+              
                 })
             } else {
                     this.setState({
                         isOpen: false,
+                        
                     })
                 }
         }
@@ -81,7 +86,7 @@ export class Definition extends Component{
         return(
             <div><button aria-expanded={this.state.isOpen} aria-controls={`#term${this.props.index}`}onClick={this.handleClick}>
             <div id={`#term${this.props.index}`}><h2 className="definition-title" >{this.props.name}</h2></div></button>
-                {this.state.isOpen && <div><p>{this.props.def} <sup><a style={{color: 'white'}}href={this.props.source} target="_blank" title="Source" aria-label="Source">*</a></sup></p></div> }
+                {this.state.isOpen && <div className={"definition-expanded"}><p>{this.props.def} <sup><a href={this.props.source} target="_blank" title="Source" aria-label="Source">*</a></sup></p></div> }
             </div>
         )
     }

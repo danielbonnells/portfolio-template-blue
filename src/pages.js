@@ -5,6 +5,7 @@ import herovid from './herobluegreyloop.mp4';
 import herowebm from './herowebm.webm';
 import heroposter from './heroposter.png';
 
+
 export class About extends Component {
 
     render(){
