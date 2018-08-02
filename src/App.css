@@ -296,13 +296,15 @@ background-color: var(--darker-color)
 /* ------- Home Page --------- */
 .home-container{
   position: relative;
+  margin-top: -10vh;
   width: 100%;
   min-height: 100vh;
   z-index: 0;
-  /* background: rgb(164, 156, 163); */
+  background: rgb(164, 156, 163); 
   overflow-x: hidden;
   
 }
+
 /*.hero {
   position: absolute;
   top:0px;
@@ -317,7 +319,7 @@ background-color: var(--darker-color)
   position: relative;
   min-height: 90vh;
   z-index: 10;
-  margin-top: 1em;
+  margin-top: 10vh;
   
  
 }
