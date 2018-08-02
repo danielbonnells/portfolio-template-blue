@@ -84,7 +84,7 @@ export class Definition extends Component{
     render(){
 
         return(
-            <div><button aria-expanded={this.state.isOpen} aria-controls={`#term${this.props.index}`}onClick={this.handleClick}>
+            <div><button aria-expanded={this.state.isOpen} aria-controls={`#term${this.props.index}`} onClick={this.handleClick}>
             <div id={`#term${this.props.index}`}><h2 className="definition-title" >{this.props.name}</h2></div></button>
                 {this.state.isOpen && <div className={"definition-expanded"}><p>{this.props.def} <sup><a href={this.props.source} target="_blank" title="Source" aria-label="Source">*</a></sup></p></div> }
             </div>
