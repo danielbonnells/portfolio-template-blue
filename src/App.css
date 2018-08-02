@@ -300,11 +300,7 @@ background-color: var(--darker-color)
   width: 100%;
   min-height: 100vh;
   z-index: 0;
-<<<<<<< HEAD
   background: rgb(164, 156, 163); 
-=======
- 
- 
   overflow-x: hidden;
   margin-top: -10vh;
   
